@@ -1,9 +1,9 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
-# copy project
-COPY . /var/www/html/
+WORKDIR /app
+COPY . .
 
-# install mysql extension
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-EXPOSE 80
+CMD php -S 0.0.0.0:3000
+
